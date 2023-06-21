@@ -9,4 +9,6 @@ def step_five(model, X_test, y_test, encoder):
     X_test= pd.concat([X_test, encoded_df], axis=1)
     X_test.drop(['Pop','sex'], axis=1,inplace=True)
     y_pred = model.predict(X_test)
-    return accuracy_score(y_test,y_pred,normalize=True)
+    acc = accuracy_score(y_test,y_pred,normalize=True)
+    print(acc)
+    return acc
