@@ -9,7 +9,6 @@ def step_one(data):
     df = pd.read_csv(data)
     df.dropna(axis=0,inplace=True)
     df.drop(['case'], axis=1,inplace=True)
-    with open('data/data.pkl','wb') as file:
-        pkl.dump(df,file)
+    pd.to_pickle(df,"data\data.pkl")
 
-step_one(r"\data\possum.csv")
+step_one(r"data\possum.csv")
