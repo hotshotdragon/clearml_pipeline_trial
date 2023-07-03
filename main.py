@@ -38,7 +38,7 @@ def four(model,X_test,y_test, encoder):
     return step_four(model, X_test,y_test, encoder)
 ############################################################################
 @PipelineDecorator.pipeline(
-    name='pipeline_test_decorator', project='decorator_check',version=0.0.1
+    name='pipeline_test_decorator', project='decorator_check',version='0.0.1'
     )
 
 def executing_pipeline(url):
