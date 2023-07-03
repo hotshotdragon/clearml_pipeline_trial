@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y \
     git
 
 # Install Docker
-RUN curl -sSL https://get.docker.com/ | sh
+# RUN curl -sSL https://get.docker.com/ | sh
 
 # Copy the rest of your application code
 COPY . .
@@ -46,4 +46,4 @@ COPY . .
 # Make entrypoint.sh executable
 # RUN chmod +x entrypoint.sh
 
-# ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ['python','main.py']
