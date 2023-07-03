@@ -2,7 +2,7 @@ from clearml.automation.controller import PipelineDecorator
 from clearml import TaskTypes
 
 @PipelineDecorator.component(
-    return_values=['X_train, X_test, y_train, y_test'], 
+    return_values=['X_train', 'X_test', 'y_train', 'y_test'], 
     cache=True, task_type=TaskTypes.data_processing
 )
 def one(url):
@@ -11,7 +11,7 @@ def one(url):
     return step_one(url)
 ############################################################################
 @PipelineDecorator.component(
-        return_values=['X_train', 'encoder'],
+        return_values=['X_train','encoder'],
         cache=True, task_type=TaskTypes.data_processing
         )
 def two(X_train):
