@@ -1,19 +1,18 @@
-from clearml import Task, StorageManager
+def step_one(pickle_data_url:str, test_size = 0.2, random_state = 42):
+    print('STEP 1')
+    import sklearn
+    from sklearn.model_selection import train_test_split
+    import pandas as pd
+    import pickle as pkl
+    from clearml import StorageManager
 
-# create an dataset experiment
-task = Task.init(project_name="PIPE_TEST", task_name="Pipeline step 1 dataset artifact")
-# task.set_base_docker("clearml_pipeline")
-# only create the task, we will actually execute it later
-task.execute_remotely()
 
-# simulate local dataset, download one, so we have something local
-local_data = StorageManager.get_local_copy(
-    remote_url='https://github.com/hotshotdragon/clearml_pipeline_trial/blob/main/data/possum.csv?raw=true')
+    local_data_pkl = StorageManager.get_local_copy(remote_url=pickle_data_url)
+    with open(local_data_pkl,'rb') as f:
+        df = pkl.load(f)
 
-# add and upload local file containing our toy dataset
-task.upload_artifact('dataset', artifact_object=local_data)
+    y = df['age']
+    X = df[(c for c in df.columns if c != 'age')]
 
-print('uploading artifacts in the background')
-
-# we are done
-print('Done')
+    X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=test_size,random_state=random_state)
+    return X_train, X_test, y_train, y_test
