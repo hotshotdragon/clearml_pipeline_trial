@@ -59,7 +59,7 @@ def executing_pipeline(url):
 
 ############################################################################
 if __name__ == "__main__":
-    PipelineDecorator.set_default_execution_queue('default')
+    PipelineDecorator.set_default_execution_queue('services')
     executing_pipeline(url='https://github.com/hotshotdragon/clearml_pipeline_trial/blob/main/data/possum.csv?raw=true')
 
     print("process completed")
