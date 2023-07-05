@@ -43,7 +43,8 @@ RUN apt-get update && apt-get install -y \
 # Copy the rest of your application code
 COPY . .
 
+CMD ["BASH"]
 # Make entrypoint.sh executable
 # RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ['python','main.py']
+# ENTRYPOINT ['python','main.py']
